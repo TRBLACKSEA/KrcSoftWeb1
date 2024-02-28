@@ -1,0 +1,42 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    ViewBag.Title = "UpdateOurServices";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Hizmet Güncelle</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/UpdateOurServices/@Model.guncellenecekOurServices.ID" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Hizmet Başlığı</label>
+                    <input name="ServiceTitle" type="text" class="form-control" id="exampleInputEmail1" value="@Model.guncellenecekOurServices.ServiceTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Hizmet Açıklaması</label>
+                    <textarea class="form-control" name="ServiceDescription" rows="5" required>@Model.guncellenecekOurServices.ServiceDescription</textarea>
+                </div>
+                <div class="form-group">
+                    <img src="@Model.guncellenecekOurServices.ServiceImage" />
+                    <p>Resim Seçiniz</p>
+                    <input type="file" name="ServiceImage" accept="@Model.guncellenecekOurServices.ServiceImage"/>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Güncelle</button>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">@ViewBag.UpdateOurServiceMessage</label>
+            </div>
+        </form>
+    </div>
+</div>
+

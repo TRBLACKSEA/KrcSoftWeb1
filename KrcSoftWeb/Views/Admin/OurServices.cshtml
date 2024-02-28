@@ -1,0 +1,59 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Servisler</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/OurServices/" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Servis Adı</label>
+                    <input name="KonuAdi" type="text" class="form-control" id="exampleInputEmail1" required>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Ekle</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Servis Konuları</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Servis Konusu</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ServisFormKonulari)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.KonuAdi</td>
+                            <td><a href="/Admin/UpdateServiceSubjects/@item.ID" class="btn btn-success">Güncelle</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <!-- /.card -->
+</div>

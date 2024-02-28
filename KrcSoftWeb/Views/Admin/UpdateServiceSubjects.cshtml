@@ -1,0 +1,34 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Servis</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/UpdateServiceSubjects/" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div hidden>
+                    <input name="ID" value="@Model.guncellenecekServisKonusu.ID"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Servis Adı</label>
+                    <input name="KonuAdi" type="text" class="form-control" id="exampleInputEmail1" value="@Model.guncellenecekServisKonusu.KonuAdi" required>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Güncelle</button>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">@ViewBag.UpdateServiceSubjectsMessage</label>
+            </div>
+        </form>
+    </div>
+</div>

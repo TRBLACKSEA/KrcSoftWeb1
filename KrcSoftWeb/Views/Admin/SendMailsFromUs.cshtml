@@ -1,0 +1,53 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Gelen Mailler</h2>
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                        <p class="text-muted font-13 m-b-30">
+                            Gönderilen Mailleri Görüntülüyorsunuz.
+                        </p>
+
+                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Başlık</th>
+                                    <th>İçerik</th>
+                                    <th>İletilen Maili</th>
+                                    <th>Gönderim Tarihi</th>
+                                    <th>İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.gonderilenMailler)
+                                {
+                                    <tr>
+                                        <td>@item.Baslik</td>
+                                        <td>@item.Icerik</td>
+                                        <td>@item.GonderenMaili</td>
+                                        <td>@item.GonderimTarihi</td>
+                                        <td>
+                                            <a href="/Admin/ReadSendingMails/@item.ID" class="btn btn-success">Oku</a>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

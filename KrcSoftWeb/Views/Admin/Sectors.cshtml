@@ -1,0 +1,65 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    ViewBag.Title = "Sectors";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Yeni Sektör Ekle</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/CreateNewSector/" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Sektör Bilgilerini Giriniz</label>
+                    <input name="Adi" type="text" class="form-control" id="exampleInputEmail1" placeholder="Sektör Adı">
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Yeni Sektör Ekle</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /.card -->
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Sektörler</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Sektör Adı</th>
+                        <th>Filtre</th>
+                        <th>Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Sektorler)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.Adi</td>
+                            <td>@item.Filtre</td>
+                            <td><a class="btn btn-success" style="color:white;" href="/Admin/UpdateSector/@item.ID">Güncelle</a></td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <!-- /.card -->
+</div>

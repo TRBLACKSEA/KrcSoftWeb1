@@ -1,0 +1,58 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    ViewBag.Title = "IncomingMails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12 col-sm-12 ">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Servis Formları</h2>
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box table-responsive">
+                        <p class="text-muted font-13 m-b-30">
+                            Açılan Servis Formlarını Görüntülüyorsunuz.
+                        </p>
+
+                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Oluşturanın Adı</th>
+                                    <th>Oluşturanın Telefonu</th>
+                                    <th>Başlık</th>
+                                    <th>İçerik</th>
+                                    <th>Oluşturanın Maili</th>
+                                    <th>Açılış Tarihi</th>
+                                    <th>İşlem</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.servisFormlari)
+                                {
+                                    <tr>
+                                        <td>@item.Isim</td>
+                                        <td>@item.ServisTalepEdenTelefon</td>
+                                        <td>@item.ServisKonu</td>
+                                        <td>@item.ServisIcerik</td>
+                                        <td>@item.ServisTalepEdenMail</td>
+                                        <td>@item.OlusturulmaTarihi</td>
+                                        <td>
+                                            <a href="/Admin/ReadServiceForms/@item.ID" class="btn btn-success">Oku</a>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

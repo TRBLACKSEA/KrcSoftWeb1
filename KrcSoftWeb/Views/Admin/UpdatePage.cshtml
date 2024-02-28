@@ -1,0 +1,47 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    ViewBag.Title = "Sectors";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Yeni Sayfa Ekle</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/UpdatePage/" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Sayfa Güncelle</label>
+                    <input name="SayfaAdi" type="text" class="form-control" id="exampleInputEmail1" value="@Model.guncellenecekSayfa.SayfaAdi">
+                </div>
+                <input hidden type="text" value="@Model.guncellenecekSayfa.ID" name="ID"/>
+
+                
+                @*<div class="form-group">
+                    <select class="form-control select2" style="width: 100%;">
+                        <option selected="selected">Sektör Seçiniz</option>
+                        @foreach (var item in Model.Sektorler)
+                        {
+                            <option value="@item.Filtre">@item.Adi</option>
+                        }
+                    </select>
+                </div>*@
+                <div class="form-check">
+
+                    @Html.CheckBox("Kullanimdami",Model.guncellenecekSayfa.Kullanimdami)
+                    <label class="form-check-label" for="exampleCheck1">Kullanımda</label>
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success">Güncelle</button>
+            </div>
+        </form>
+    </div>
+
+</div>

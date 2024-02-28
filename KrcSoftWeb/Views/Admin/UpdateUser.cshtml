@@ -1,0 +1,48 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    ViewBag.Title = "Sectors";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Yeni Kullanıcı Ekle</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/UpdateUser/" method="post">
+            <div class="card-body">
+                <div hidden>
+                    <input name="ID"value="@Model.guncellenecekUser.ID"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Kullanıcı Bilgilerini Giriniz</label>
+                    <input name="UserName" type="text" class="form-control" id="exampleInputEmail1" value="@Model.guncellenecekUser.UserName">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1"></label>
+                    <input name="Password" type="text" class="form-control" id="exampleInputEmail1" value="@Model.guncellenecekUser.Password">
+                </div>
+                <div class="form-group">
+                    <img style="width:250px;height:250px;" src="@Model.guncellenecekUser.UserPhoto" />
+                    <p>Resim Seçiniz</p>
+                    <input type="file" name="UserPhoto" />
+                </div>
+                <div class="form-check">
+                    @Html.CheckBox("Kullanimdami", Model.guncellenecekUser.Kullanimdami)
+                    <label class="form-check-label" for="exampleCheck1">Kullanımda</label>
+                </div>
+                <div class="form-check">
+                    @Html.CheckBox("IsAdmin", Model.guncellenecekUser.IsAdmin)
+                    <label class="form-check-label" for="exampleCheck1">Admin</label>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Güncelle</button>
+            </div>
+        </form>
+    </div>
+</div>

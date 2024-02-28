@@ -1,0 +1,94 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>SliderEdit</h2>
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Slider Ekle</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/SliderEdit/" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div hidden>
+                    <input name="ID" value="" />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Slider Başlığı</label>
+                    <input name="SliderTitle" type="text" class="form-control" id="exampleInputEmail1" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">İçerik</label>
+                    <input name="SliderDescription" type="text" class="form-control" id="exampleInputEmail1" required>
+                </div>
+                <div class="form-group">
+                    <img id="uploadPreview" style="width:240px;height:135px;" />
+                    <p>Resim Seçiniz</p>
+                    <input id="uploadImage" type="file" name="SliderImage" onchange="PreviewImage();"  required />
+                </div>
+                <div class="form-group">
+                    <a href="#">@ViewBag.Mesaj</a>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Ekle</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /.card -->
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Slider Sayfaları</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Slider Başlık</th>
+                        <th>Slider İçerik</th>
+                        <th>Slider Resim</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.sliderItems)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.SliderTitle</td>
+                            <td>@item.SliderDescription</td>
+                            <td><img style="width:240px; height:135px;" src="@item.SliderImage" alt="@item.SliderTitle" /></td>
+                            <td><a class="btn btn-success" style="color:white;" href="/Admin/UpdateSliderItem/@item.ID">Güncelle</a></td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <!-- /.card -->
+</div>
+<script type="text/javascript">
+
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+
+</script>

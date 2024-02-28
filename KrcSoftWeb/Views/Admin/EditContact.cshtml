@@ -1,0 +1,63 @@
+﻿@model KrcSoftWeb.Models.DataModel  
+@{
+    ViewBag.Title = "EditContact";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">İletişim Bilgileri</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/EditContact/" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">İletişim Telefonu</label>
+                    <input name="Telefon" type="tel" class="form-control" id="exampleInputEmail1" value="@Model.IletisimBilgileri.Telefon" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">İletişim Maili</label>
+                    <input name="Mail" type="text" class="form-control" id="exampleInputEmail1" value="@Model.IletisimBilgileri.Mail" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Mail Yetki Kodu</label>
+                    <input name="MailAuthCode" type="text" class="form-control" id="exampleInputEmail1" value="@Model.IletisimBilgileri.MailAuthCode" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Servis Formu Mail Adresi</label>
+                    <input name="SeviceFormEmail" type="text" class="form-control" id="exampleInputEmail1" value="@Model.IletisimBilgileri.SeviceFormEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Twitter</label>
+                    <input name="Twitter" type="text" class="form-control" id="exampleInputEmail1" value="@Model.IletisimBilgileri.Twitter" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Instagram</label>
+                    <input name="Instagram" type="text" class="form-control" id="exampleInputEmail1" value="@Model.IletisimBilgileri.Instagram" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Facebook</label>
+                    <input name="Facebook" type="text" class="form-control" id="exampleInputEmail1" value="@Model.IletisimBilgileri.Facebook" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Linkdn</label>
+                    <input name="Linkdn" type="text" class="form-control" id="exampleInputEmail1" value="@Model.IletisimBilgileri.Linkdn" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Adres</label>
+                    <textarea class="form-control" name="Adres" rows="5" required>@Model.IletisimBilgileri.Adres</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">@ViewBag.EditAboutMesaj</label>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,28 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    ViewBag.Title = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Hizmetlerimiz</h2>
+        </div>
+
+        <div class="row">
+            @foreach (var item in Model.Hizmetlerimiz)
+            {
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+                    <div><img src="@item.ServiceImage" style="width:auto;height:auto;" /></div>
+                    <h4 class="title"><a href="">@item.ServiceTitle</a></h4>
+                    <p class="description">@item.ServiceDescription</p>
+            </div>
+            }
+
+        </div>
+
+    </div>
+</section><!-- End Services Section -->

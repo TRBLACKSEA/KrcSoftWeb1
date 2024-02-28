@@ -1,0 +1,43 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Mail Yanıtla</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/AnswerIncomingMails/@Model.cevaplanacakMail.ID" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div hidden class="form-group">
+                    <input name="GondereninAdi" type="text" class="form-control" id="exampleInputEmail1" value="@Model.cevaplanacakMail.GondereninAdi">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Kime:(@Model.cevaplanacakMail.GondereninAdi)</label>
+                    <input name="GonderenMaili" type="text" class="form-control" id="exampleInputEmail1" value="@Model.cevaplanacakMail.GonderenMaili" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Konu</label>
+                    <input name="Baslik" type="text" class="form-control" id="exampleInputEmail1" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">İçerik</label>
+                    <textarea class="form-control" name="Icerik" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">@ViewBag.Mesaj</label>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Gönder</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

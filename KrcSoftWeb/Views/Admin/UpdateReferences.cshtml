@@ -1,0 +1,70 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    ViewBag.Title = "EditReferences";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Yeni Referans Ekle</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/UpdateReferences/" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Referans Bilgilerini Giriniz</label>
+                    <input name="AD" type="text" class="form-control" id="exampleInputEmail1" value="@Model.guncellenecekReferans.AD">
+                </div>
+                <div hidden>
+                    <input name="ID" value="@Model.guncellenecekReferans.ID"/>
+                </div>
+                @*<div hidden>
+                    <input name="SectorID" value="@Model.guncellenecekReferans.SectorID"/>
+                </div>*@
+                <div class="form-group">
+                    <select name="SectorID" class="form-control select2" style="width: 100%;">
+                        <option value="@Model.guncellenecekReferans.sector.ID" selected="selected">@Model.guncellenecekReferans.sector.Adi</option>
+                        @foreach (var item in Model.Sektorler)
+                        {
+                            <option value="@item.ID">@item.Adi</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <img src="@Model.guncellenecekReferans.ResimAdres" />
+                    <p>Resim Seçiniz</p>
+                    <input id="uploadImage" type="file" name="ResimAdres" onchange="PreviewImage();"/>
+                </div>
+                <div>
+                    <a href="#">@Model.guncellenecekReferans.Kullanimdami</a>
+                </div>
+                <div class="form-check">
+                    @Html.CheckBox("Kullanimdami", Model.guncellenecekReferans.Kullanimdami)
+                    <label class="form-check-label" for="exampleCheck1">Kullanımda</label>
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Güncelle</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+
+</script>
+

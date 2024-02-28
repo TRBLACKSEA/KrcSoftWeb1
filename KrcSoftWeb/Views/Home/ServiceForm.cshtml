@@ -1,0 +1,53 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- ======= Contact Us Section ======= -->
+<!-- ======= Contact Us Section ======= -->
+<section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Servis Talep Formu</h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-12" data-aos="fade-up" data-aos-delay="300">
+                <form action="/Home/ServiceForm" method="post" role="form" class="php-email-form">
+                    <div class="row">
+                        <div class="form-group">
+                            <a href="#">@ViewBag.Mesaj</a>
+                        </div>
+                        <div class="col-lg-12 form-group">
+                            <input type="text" name="Isim" class="form-control" id="name" placeholder="İsminiz" required>
+                        </div>
+                        <div class="col-lg-6 form-group">
+                            <input type="tel" class="form-control" name="ServisTalepEdenTelefon" id="email" placeholder="Telefonunuz" required>
+                        </div>
+                        <div class="col-lg-6 form-group">
+                            <input type="email" class="form-control" name="ServisTalepEdenMail" id="email" placeholder="Mail Adresiniz" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select name="ServisKonu" class="form-control select2" style="width: 100%;">
+                            <option value="0" selected="selected">Konu Seçiniz</option>
+                            @foreach (var item in Model.ServisFormKonulari)
+                            {
+                                <option value="@item.KonuAdi">@item.KonuAdi</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="ServisIcerik" rows="5" placeholder="Detaylar" required></textarea>
+                    </div>
+
+                    <div class="text-center"><button type="submit">Gönder</button></div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Contact Us Section -->

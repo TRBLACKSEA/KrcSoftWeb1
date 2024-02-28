@@ -1,0 +1,42 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Genel Ayarlar</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/CommonSettings/" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Başlık</label>
+                    <input name="_SiteTitle" type="tel" class="form-control" id="exampleInputEmail1" value="@Model.IletisimBilgileri.SiteTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Açıklama</label>
+                    <textarea class="form-control" name="_Decription" rows="5" required>@Model.IletisimBilgileri.Decription</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Anahtar Kelimeler</label>
+                    <input name="_Keywords" type="text" class="form-control" id="exampleInputEmail1" value="@Model.IletisimBilgileri.Keywords" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Yazar</label>
+                    <input name="_Author" type="text" class="form-control" id="exampleInputEmail1" value="@Model.IletisimBilgileri.Author" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">@ViewBag.CommonSettingsMesssage</label>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,86 @@
+﻿@model KrcSoftWeb.Models.DataModel
+@{
+    ViewBag.Title = "Sectors";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Yeni Sayfa Ekle</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="/Admin/CreateNewPage/" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Sayfa Bilgilerini Giriniz</label>
+                    <input name="SayfaAdi" type="text" class="form-control" id="exampleInputEmail1" placeholder="Sayfa Adı">
+                </div>
+                @*<div class="form-group">
+                    <select class="form-control select2" style="width: 100%;">
+                        <option selected="selected">Sektör Seçiniz</option>
+                        @foreach (var item in Model.Sektorler)
+                        {
+                            <option value="@item.Filtre">@item.Adi</option>
+                        }
+                    </select>
+                </div>*@
+                <div class="form-check">
+                    <input type="checkbox" name="Kullanimdami" value="true" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Kullanımda</label>
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Sayfa Ekle</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /.card -->
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Sayfalar</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Sayfa Adı</th>
+                        <th>Durum</th>
+                        <th>Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Sayfalar)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.SayfaAdi</td>
+                        @if (item.Kullanimdami)
+                        {
+                            <td>Kullanımda</td>
+                        }
+                        else
+                        {
+                            <td>Kullanım Dışı</td>
+                        }
+                    <td><a class="btn btn-success" style="color:white;" href="/Admin/UpdatePage/@item.ID">Güncelle</a></td>
+
+                    </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <!-- /.card -->
+</div>
